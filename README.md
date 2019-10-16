@@ -1,0 +1,2 @@
+# bitpctechapi.ga
+.net core
