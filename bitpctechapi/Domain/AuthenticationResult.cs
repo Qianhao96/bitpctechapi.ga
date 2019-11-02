@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PcPart.Domain
+namespace bitpctechapi.Domain
 {
     public class AuthenticationResult
     {

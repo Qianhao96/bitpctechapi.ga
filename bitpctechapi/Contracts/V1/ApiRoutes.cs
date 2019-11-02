@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PcPart.Contracts
+namespace bitpctechapi.Contracts
 {
     public class ApiRoutes
     {
@@ -23,6 +23,15 @@ namespace PcPart.Contracts
         {
             public const string Login = Base + "/identity/login";
             public const string Register = Base + "/identity/register";
+        }
+
+        public static class AdminPcParts
+        {
+            public const string AddPart = Base + "/admin/pcpart";
+            public const string GetPartAll = Base + "/admin/pcpart";
+            public const string AddBrand = Base + "/admin/brand";
+            public const string AddCategory = Base + "/admin/category";
+            public const string AddSpecification = Base + "/admin/specification";
         }
     }
 }

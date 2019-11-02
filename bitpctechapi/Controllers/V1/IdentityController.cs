@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PcPart.Contracts;
-using PcPart.Contracts.V1.Requests;
-using PcPart.Contracts.V1.Responses;
-using PcPart.Services;
+using bitpctechapi.Contracts;
+using bitpctechapi.Contracts.V1.Requests;
+using bitpctechapi.Contracts.V1.Responses;
+using bitpctechapi.Services;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace PcPart.Controllers.V1
+namespace bitpctechapi.Controllers.V1
 {
     public class IdentityController : Controller
     {

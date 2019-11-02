@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace PcPart.Installers
+namespace bitpctechapi.Installers
 {
     public interface IInstaller
     {

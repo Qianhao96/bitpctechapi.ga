@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PcPart.Data;
+using bitpctechapi.Data;
 
 namespace bitpctechapi.Migrations
 {
@@ -186,7 +186,7 @@ namespace bitpctechapi.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("PcPart.Domain.Post", b =>
+            modelBuilder.Entity("bitpctechapi.Domain.Post", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();

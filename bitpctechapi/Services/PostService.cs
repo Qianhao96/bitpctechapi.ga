@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using PcPart.Data;
-using PcPart.Domain;
+using bitpctechapi.Data;
+using bitpctechapi.Domain;
 
-namespace PcPart.Services
+namespace bitpctechapi.Services
 {
     public class PostService : IPostService
     {

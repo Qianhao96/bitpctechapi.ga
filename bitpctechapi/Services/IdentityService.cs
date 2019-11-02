@@ -7,10 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using PcPart.Domain;
-using PcPart.Options;
+using bitpctechapi.Domain;
+using bitpctechapi.Options;
 
-namespace PcPart.Services
+namespace bitpctechapi.Services
 {
     public class IdentityService : IIdentityService
     {

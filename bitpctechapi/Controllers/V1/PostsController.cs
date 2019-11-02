@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PcPart.Contracts;
-using PcPart.Contracts.V1.Requests;
-using PcPart.Domain;
-using PcPart.Services;
+using bitpctechapi.Contracts;
+using bitpctechapi.Contracts.V1.Requests;
+using bitpctechapi.Domain;
+using bitpctechapi.Services;
 
-namespace PcPart.Controllers
+namespace bitpctechapi.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PostsController : Controller
@@ -36,7 +36,7 @@ namespace PcPart.Controllers
             if (post == null)
                 return NotFound();
 
-            return Ok(post );
+            return Ok(post);
         }
 
         [HttpPut(ApiRoutes.Posts.Update)]

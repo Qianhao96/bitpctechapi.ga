@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PcPart.Contracts.V1.Requests
+namespace bitpctechapi.Contracts.V1.Requests
 {
     public class CreatePostRequest
     {

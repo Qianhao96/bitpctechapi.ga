@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PcPart.Contracts.V1.Responses
+namespace bitpctechapi.Contracts.V1.Responses
 {
     public class PostResponse
     {

@@ -1,12 +1,13 @@
-﻿using System;
+﻿using bitpctechapi.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace bitpctechapi.Contracts.V1.Responses
 {
-    public class AuthSuccessResponse
+    public class AdminGetAllPcPartResponse
     {
-        public string Token { get; set; }
+        public PcPart[] PcParts { get; set; }
     }
 }
