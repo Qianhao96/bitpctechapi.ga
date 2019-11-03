@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace bitpctechapi.Contracts
+﻿namespace bitpctechapi.Contracts
 {
     public class ApiRoutes
     {
@@ -29,9 +24,16 @@ namespace bitpctechapi.Contracts
         {
             public const string AddPart = Base + "/admin/pcpart";
             public const string GetPartAll = Base + "/admin/pcpart";
+            public const string GetPartById = Base + "/admin/pcpart/{pcPartId}";
             public const string AddBrand = Base + "/admin/brand";
+            public const string GetBrandAll = Base + "/admin/brand";
+            public const string GetBrandById = Base + "/admin/brand/{brandId}";
             public const string AddCategory = Base + "/admin/category";
+            public const string GetCategoryAll = Base + "/admin/category";
+            public const string GetCategoryById = Base + "/admin/category/{categoryId}";
             public const string AddSpecification = Base + "/admin/specification";
+            public const string GetSpecificationAll = Base + "/admin/specification";
+            public const string GetSpecificationById = Base + "/admin/specification/{specificationId}";
         }
     }
 }

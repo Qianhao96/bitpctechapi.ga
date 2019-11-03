@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using bitpctechapi.Data;
@@ -29,9 +28,9 @@ namespace bitpctechapi.Services
 
         public async Task<bool> UpdatePostAsync(Post postToUpdate)
         {
-            //var exists = await GetPostByIdAsync(postToUpdate.Id) != null;
+            var post = await GetPostByIdAsync(postToUpdate.Id);
 
-            var post = _dataContext.Posts.Select(po => new { po.Id, po.Name}).Where(pot => pot.Id == postToUpdate.Id);
+            //var post = _dataContext.Posts.Select(po => new { po.Id, po.Name}).Where(pot => pot.Id == postToUpdate.Id);
             if (post != null)
             {
                 _dataContext.Posts.Update(postToUpdate);
@@ -45,10 +44,14 @@ namespace bitpctechapi.Services
         public async Task<bool> DeletePostAsync(Guid postId)
         {
             var post = await GetPostByIdAsync(postId);
-            _dataContext.Posts.Remove(post);
+            if (post != null)
+            {
+                _dataContext.Posts.Remove(post);
 
-            var deleted = await _dataContext.SaveChangesAsync();
-            return deleted > 0;
+                var deleted = await _dataContext.SaveChangesAsync();
+                return deleted > 0;
+            }
+            return false;
         }
 
         public async Task<bool> CreatePostAsync(Post post)

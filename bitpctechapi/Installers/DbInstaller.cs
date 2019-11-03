@@ -19,6 +19,7 @@ namespace bitpctechapi.Installers
                     configuration.GetConnectionString("DefaultConnection")));
             //"DefaultConnection": "server=192.168.20.213;port=3306;database=bitpctechtestdb;uid=bitpctechapi;password=password
             services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DataContext>();
 
             services.AddScoped<IPostService, PostService>();

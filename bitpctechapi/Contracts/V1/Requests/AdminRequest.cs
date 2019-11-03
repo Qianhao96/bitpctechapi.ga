@@ -1,8 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace bitpctechapi.Contracts.V1.Requests
 {
@@ -24,19 +20,16 @@ namespace bitpctechapi.Contracts.V1.Requests
     public class AdminAddBrandRequest
     {
         public string Name { get; set; }
-
     }
 
     public class AdminAddCategoryRequest
     {
         public string Name { get; set; }
         public int DisplayOrder { get; set; }
-
     }
 
     public class AdminAddSpecificationRequest
     {
         public string Description { get; set; }
-
     }
 }

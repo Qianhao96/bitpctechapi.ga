@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using bitpctechapi.Data;
 using bitpctechapi.Domain;
 using Microsoft.EntityFrameworkCore;
@@ -68,6 +65,21 @@ namespace bitpctechapi.Services
         public async Task<PcPart[]> GetPcPartAll()
         {
             return await _dataContext.PcParts.ToArrayAsync();
+        }
+
+        public async Task<Category[]> GetCategoryAll()
+        {
+            return await _dataContext.Categories.ToArrayAsync();
+        }
+
+        public async Task<Brand[]> GetBrandAll()
+        {
+            return await _dataContext.Brands.ToArrayAsync();
+        }
+
+        public async Task<Specification[]> GetSpecificationAll()
+        {
+            return await _dataContext.Specifications.ToArrayAsync();
         }
     }
 }

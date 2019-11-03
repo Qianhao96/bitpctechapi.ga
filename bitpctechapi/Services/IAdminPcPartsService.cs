@@ -10,9 +10,12 @@ namespace bitpctechapi.Services
         Task<PcPart[]> GetPcPartAll();
         Task<bool> AddCategory(Category category);
         Task<Category> GetCategoryById(int categoryId);
+        Task<Category[]> GetCategoryAll();
         Task<bool> AddBrand(Brand brand);
         Task<Brand> GetBrandById(int brandId);
+        Task<Brand[]> GetBrandAll();
         Task<bool> AddSpecification(Specification specification);
         Task<Specification> GetSpecificationById(int specificationId);
+        Task<Specification[]> GetSpecificationAll();
     }
 }
