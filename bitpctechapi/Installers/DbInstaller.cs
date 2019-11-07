@@ -11,6 +11,7 @@ namespace bitpctechapi.Installers
     {
         public void Installservices(IServiceCollection services, IConfiguration configuration)
         {
+            //test branch protection rule
             //UseSqlServer is used when want to connect to you local Sql server
             //Use this config when use "UseSqlServer" -- "Server=DESKTOP-ML8G5H8; Database=UserDB; Trusted_Connection=True; MultipleActiveResultSets=True"s
             //services.AddDbContext<DataContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
