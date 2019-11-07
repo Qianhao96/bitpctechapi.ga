@@ -15,7 +15,7 @@ namespace bitpctechapi.Installers
             //Use this config when use "UseSqlServer" -- "Server=DESKTOP-ML8G5H8; Database=UserDB; Trusted_Connection=True; MultipleActiveResultSets=True"s
             //services.AddDbContext<DataContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<DataContext>(options =>
-                options.UseSqlServer(
+                options.UseMySql(
                     configuration.GetConnectionString("DefaultConnection")));
             //"DefaultConnection": "server=192.168.20.213;port=3306;database=bitpctechtestdb;uid=bitpctechapi;password=password
             services.AddDefaultIdentity<IdentityUser>()
