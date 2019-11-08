@@ -4,21 +4,26 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using bitpctechapi.Data;
 using bitpctechapi.Services;
+using Microsoft.AspNetCore.Hosting;
 
 namespace bitpctechapi.Installers
 {
     public class DbInstaller : IInstaller
     {
-        public void Installservices(IServiceCollection services, IConfiguration configuration)
+        public void Installservices(IServiceCollection services, IConfiguration configuration, IHostingEnvironment env)
         {
-            //test branch protection rule
-            //UseSqlServer is used when want to connect to you local Sql server
-            //Use this config when use "UseSqlServer" -- "Server=DESKTOP-ML8G5H8; Database=UserDB; Trusted_Connection=True; MultipleActiveResultSets=True"s
-            //services.AddDbContext<DataContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<DataContext>(options =>
+            if (env.IsProduction())
+            {
+                services.AddDbContext<DataContext>(options =>
                 options.UseMySql(
-                    configuration.GetConnectionString("DefaultConnection")));
-            //"DefaultConnection": "server=192.168.20.213;port=3306;database=bitpctechtestdb;uid=bitpctechapi;password=password
+                    configuration.GetConnectionString("LiveConnection")));
+            }
+            else
+            {
+                services.AddDbContext<DataContext>(options =>
+                options.UseSqlServer(
+                    configuration.GetConnectionString("lqhDevConnection")));
+            }
             services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DataContext>();
