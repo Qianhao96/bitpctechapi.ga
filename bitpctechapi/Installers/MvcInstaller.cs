@@ -8,6 +8,7 @@ using bitpctechapi.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Hosting;
 
 namespace bitpctechapi.Installers
 {
@@ -15,7 +16,7 @@ namespace bitpctechapi.Installers
     {
         public string JwtBearerDefault { get; private set; }
 
-        public void Installservices(IServiceCollection services, IConfiguration configuration)
+        public void Installservices(IServiceCollection services, IConfiguration configuration, IHostingEnvironment env)
         {
             var jwtSettings = new JwtSettings();
             configuration.Bind(nameof(jwtSettings), jwtSettings);
@@ -47,7 +48,7 @@ namespace bitpctechapi.Installers
 
             services.AddSwaggerGen(x =>
             {
-                x.SwaggerDoc("v1", new Info { Title = "PC Part API", Version = "v1" });
+                x.SwaggerDoc("v1", new Info { Title = "PC Part API: " + env.EnvironmentName, Version = "v1" });
                 var security = new Dictionary<string, IEnumerable<string>>
                 {
                     {"Bearer", new string[0] }
