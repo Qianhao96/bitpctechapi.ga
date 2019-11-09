@@ -99,7 +99,7 @@ namespace bitpctechapi.Services
 
             var createdUser = await _userManager.CreateAsync(newUser, password);
             
-            if(_jwtSettings.isAdmin)
+            if(_jwtSettings.IsAdmin)
                 await _userManager.AddToRoleAsync(newUser, "Admin");
             else
                 await _userManager.AddToRoleAsync(newUser, "Customer");

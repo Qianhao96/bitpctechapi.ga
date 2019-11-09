@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using bitpctechapi.Installers;
+using bitpctechapi.Options;
 
 namespace bitpctechapi
 {
@@ -22,6 +23,7 @@ namespace bitpctechapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
             services.InstallServicesInAssembly(Configuration, Environment);
         }
 
@@ -45,6 +47,9 @@ namespace bitpctechapi
             {
                 option.SwaggerEndpoint(swaggerOptions.UiEndPoint, swaggerOptions.Description);
             });
+
+            app.UseCors(builder =>
+            builder.WithOrigins(Configuration["JwtSettings:DevClientURL"].ToString()).AllowAnyHeader().AllowAnyMethod());
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
