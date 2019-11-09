@@ -9,6 +9,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 
 namespace bitpctechapi.Installers
 {
@@ -62,6 +63,15 @@ namespace bitpctechapi.Installers
                     Type = "apiKey"
                 });
                 x.AddSecurityRequirement(security);
+            });
+
+            //Control password strenth 
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireUppercase = false;
             });
         }
     }
