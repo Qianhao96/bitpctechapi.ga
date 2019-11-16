@@ -47,13 +47,13 @@ namespace bitpctechapi.Controllers.V1
                 var status = await _adminPcPartsService.AddPcPart(pcPart);
 
                 if (status)
-                    return Ok("Successfully added a new PcPart");
+                    return Ok(new AdminAddOrDeleteResponse{ Message = "Successfully added new Pc part" });
 
                 return BadRequest("Failed");
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -72,7 +72,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -83,7 +83,7 @@ namespace bitpctechapi.Controllers.V1
             var delete = await _adminPcPartsService.DeletePcPartById(pcPartId);
 
             if (delete)
-                return Ok("Successfully deleted");
+                return Ok(new AdminAddOrDeleteResponse { Message = "Successfully delete a pc part" });
 
             return NotFound("Can not find any");
         }
@@ -125,13 +125,13 @@ namespace bitpctechapi.Controllers.V1
                 var status = await _adminPcPartsService.AddImages(image);
 
                 if (status)
-                    return Ok("Successfully added a new Images");
+                    return Ok(new AdminAddOrDeleteResponse { Message = "Successfully added new images" });
 
                 return BadRequest("Failed");
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -150,7 +150,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -165,13 +165,13 @@ namespace bitpctechapi.Controllers.V1
                 var status = await _adminPcPartsService.AddBrand(brand);
 
                 if (status)
-                    return Ok("Successfully added a new Brand");
+                    return Ok(new AdminAddOrDeleteResponse { Message = "Successfully added new brand" });
 
                 return BadRequest("Failed");
             }
             catch(Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -190,7 +190,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -205,13 +205,13 @@ namespace bitpctechapi.Controllers.V1
                 var status = await _adminPcPartsService.AddCategory(category);
 
                 if (status)
-                    return Ok("Successfully added a new category");
+                    return Ok(new AdminAddOrDeleteResponse { Message = "Successfully added new category" });
 
                 return BadRequest("Failed");
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -230,7 +230,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -245,13 +245,13 @@ namespace bitpctechapi.Controllers.V1
                 var status = await _adminPcPartsService.AddSpecification(specification);
 
                 if (status)
-                    return Ok("Successfully added a new specification");
+                    return Ok(new AdminAddOrDeleteResponse { Message = "Successfully added new specification" });
 
                 return BadRequest("Failed");
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -270,7 +270,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
