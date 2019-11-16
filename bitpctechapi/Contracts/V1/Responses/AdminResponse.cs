@@ -21,4 +21,9 @@ namespace bitpctechapi.Contracts.V1.Responses
     {
         public Category[] Categories { get; set; }
     }
+
+    public class AdminGetAllImagesResponse
+    {
+        public Images[] Images { get; set; }
+    }
 }
