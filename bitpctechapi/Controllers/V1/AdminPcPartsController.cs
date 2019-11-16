@@ -53,7 +53,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -72,7 +72,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -131,7 +131,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -150,7 +150,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -171,7 +171,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch(Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -190,7 +190,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -211,7 +211,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -230,7 +230,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -251,7 +251,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
@@ -270,7 +270,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                return StatusCode(422, e.Message);
+                return StatusCode(422, e);
             }
         }
 
