@@ -78,7 +78,7 @@ namespace bitpctechapi.Controllers.V1
 
         [HttpDelete(ApiRoutes.AdminPcParts.DeletePartById)]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DeletePartById([FromRoute]int pcPartId)
+        public async Task<IActionResult> DeletePartById([FromRoute]Guid pcPartId)
         {
             var delete = await _adminPcPartsService.DeletePcPartById(pcPartId);
 

@@ -186,39 +186,36 @@ namespace bitpctechapi.Migrations
 
             modelBuilder.Entity("bitpctechapi.Domain.Brand", b =>
                 {
-                    b.Property<int>("BrandId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.HasKey("BrandId");
+                    b.HasKey("Id");
 
                     b.ToTable("Brands");
                 });
 
             modelBuilder.Entity("bitpctechapi.Domain.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("DisplayOrder");
 
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("bitpctechapi.Domain.Images", b =>
                 {
-                    b.Property<int>("ImagesId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Image1")
                         .IsRequired();
@@ -245,20 +242,19 @@ namespace bitpctechapi.Migrations
 
                     b.Property<string>("Image9");
 
-                    b.HasKey("ImagesId");
+                    b.HasKey("Id");
 
                     b.ToTable("Images");
                 });
 
             modelBuilder.Entity("bitpctechapi.Domain.PcPart", b =>
                 {
-                    b.Property<int>("PcPartId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<int>("BrandId");
+                    b.Property<Guid>("BrandId");
 
-                    b.Property<int>("CategoryId");
+                    b.Property<Guid>("CategoryId");
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -267,7 +263,7 @@ namespace bitpctechapi.Migrations
 
                     b.Property<int?>("DisplayOrder");
 
-                    b.Property<int>("ImagesId");
+                    b.Property<Guid>("ImagesId");
 
                     b.Property<string>("Model");
 
@@ -276,9 +272,9 @@ namespace bitpctechapi.Migrations
 
                     b.Property<double>("Price");
 
-                    b.Property<int>("SpecificationId");
+                    b.Property<Guid>("SpecificationId");
 
-                    b.HasKey("PcPartId");
+                    b.HasKey("Id");
 
                     b.HasIndex("BrandId");
 
@@ -305,13 +301,12 @@ namespace bitpctechapi.Migrations
 
             modelBuilder.Entity("bitpctechapi.Domain.Specification", b =>
                 {
-                    b.Property<int>("SpecificationId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
-                    b.HasKey("SpecificationId");
+                    b.HasKey("Id");
 
                     b.ToTable("Specifications");
                 });

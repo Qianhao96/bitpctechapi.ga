@@ -10,8 +10,8 @@ using bitpctechapi.Data;
 namespace bitpctechapi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191018132421_Test")]
-    partial class Test
+    [Migration("20191116091952_NewStart")]
+    partial class NewStart
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -186,6 +186,109 @@ namespace bitpctechapi.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("bitpctechapi.Domain.Brand", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brands");
+                });
+
+            modelBuilder.Entity("bitpctechapi.Domain.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("DisplayOrder");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("bitpctechapi.Domain.Images", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Image1")
+                        .IsRequired();
+
+                    b.Property<string>("Image10");
+
+                    b.Property<string>("Image2")
+                        .IsRequired();
+
+                    b.Property<string>("Image3")
+                        .IsRequired();
+
+                    b.Property<string>("Image4")
+                        .IsRequired();
+
+                    b.Property<string>("Image5")
+                        .IsRequired();
+
+                    b.Property<string>("Image6");
+
+                    b.Property<string>("Image7");
+
+                    b.Property<string>("Image8");
+
+                    b.Property<string>("Image9");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("bitpctechapi.Domain.PcPart", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("BrandId");
+
+                    b.Property<Guid>("CategoryId");
+
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.Property<double?>("Discount");
+
+                    b.Property<int?>("DisplayOrder");
+
+                    b.Property<Guid>("ImagesId");
+
+                    b.Property<string>("Model");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<double>("Price");
+
+                    b.Property<Guid>("SpecificationId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ImagesId");
+
+                    b.HasIndex("SpecificationId");
+
+                    b.ToTable("PcParts");
+                });
+
             modelBuilder.Entity("bitpctechapi.Domain.Post", b =>
                 {
                     b.Property<Guid>("Id")
@@ -196,6 +299,18 @@ namespace bitpctechapi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("bitpctechapi.Domain.Specification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Specifications");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -240,6 +355,29 @@ namespace bitpctechapi.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("bitpctechapi.Domain.PcPart", b =>
+                {
+                    b.HasOne("bitpctechapi.Domain.Brand", "Brand")
+                        .WithMany()
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("bitpctechapi.Domain.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("bitpctechapi.Domain.Images", "Images")
+                        .WithMany()
+                        .HasForeignKey("ImagesId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("bitpctechapi.Domain.Specification", "Specification")
+                        .WithMany()
+                        .HasForeignKey("SpecificationId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

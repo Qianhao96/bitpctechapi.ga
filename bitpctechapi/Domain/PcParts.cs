@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace bitpctechapi.Domain
@@ -6,14 +7,13 @@ namespace bitpctechapi.Domain
     public class PcPart
     {
         [Key]
-        [Required]
-        public int PcPartId { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Name { get; set; }
 
         [Required]
-        public int BrandId { get; set; }
+        public Guid BrandId { get; set; }
         [ForeignKey("BrandId")]
         public Brand Brand { get; set; }
 
@@ -23,7 +23,7 @@ namespace bitpctechapi.Domain
         public string Description { get; set; }
 
         [Required]
-        public int SpecificationId { get; set; }
+        public Guid SpecificationId { get; set; }
         [ForeignKey("SpecificationId")]
         public Specification Specification { get; set; }
 
@@ -33,14 +33,14 @@ namespace bitpctechapi.Domain
         public double? Discount { get; set; }
 
         [Required]
-        public int ImagesId { get; set; }
+        public Guid ImagesId { get; set; }
         [ForeignKey("ImagesId")]
         public Images Images { get; set; }
 
         public int? DisplayOrder { get; set; }
 
         [Required]
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
     }
@@ -48,8 +48,7 @@ namespace bitpctechapi.Domain
     public class Images
     {
         [Key]
-        [Required]
-        public int ImagesId { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Image1 { get; set; }
@@ -81,8 +80,7 @@ namespace bitpctechapi.Domain
     public class Category
     {
         [Key]
-        [Required]
-        public int CategoryId { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -94,8 +92,7 @@ namespace bitpctechapi.Domain
     public class Brand
     {
         [Key]
-        [Required]
-        public int BrandId { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -104,8 +101,7 @@ namespace bitpctechapi.Domain
     public class Specification
     {
         [Key]
-        [Required]
-        public int SpecificationId { get; set; }
+        public Guid Id { get; set; }
         public string Description { get; set; }
     }
 }
