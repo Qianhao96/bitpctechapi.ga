@@ -26,6 +26,10 @@
             public const string AddPart = Base + "/admin/pcpart";
             public const string GetPartAll = Base + "/admin/pcpart";
             public const string GetPartById = Base + "/admin/pcpart/{pcPartId}";
+            public const string DeletePartById = Base + "/admin/pcpart/{pcPartId}";
+            public const string AddImages = Base + "/admin/images";
+            public const string GetImagesAll = Base + "/admin/images";
+            public const string GetImageById = Base + "/admin/images/{imageId}";
             public const string AddBrand = Base + "/admin/brand";
             public const string GetBrandAll = Base + "/admin/brand";
             public const string GetBrandById = Base + "/admin/brand/{brandId}";

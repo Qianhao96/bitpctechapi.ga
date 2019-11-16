@@ -11,7 +11,7 @@ namespace bitpctechapi.Contracts.V1.Requests
         public int SpecificationId { get; set; }
         public double Price { get; set; }
         public double Discount { get; set; }
-        public IFormFile Image { get; set; }
+        public int ImagesId { get; set; }
         public int DisplayOrder { get; set; }
         public int CategoryId { get; set; }
 
@@ -31,5 +31,19 @@ namespace bitpctechapi.Contracts.V1.Requests
     public class AdminAddSpecificationRequest
     {
         public string Description { get; set; }
+    }
+
+    public class AdminAddImagesRequest
+    {
+        public IFormFile Image1 { get; set; }
+        public IFormFile Image2 { get; set; }
+        public IFormFile Image3 { get; set; }
+        public IFormFile Image4 { get; set; }
+        public IFormFile Image5 { get; set; }
+        public IFormFile Image6 { get; set; }
+        public IFormFile Image7 { get; set; }
+        public IFormFile Image8 { get; set; }
+        public IFormFile Image9 { get; set; }
+        public IFormFile Image10 { get; set; }
     }
 }

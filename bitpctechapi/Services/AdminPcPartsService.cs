@@ -9,7 +9,7 @@ namespace bitpctechapi.Services
     {
         private readonly DataContext _dataContext;
 
-        public  AdminPcPartsService(DataContext dataContext)
+        public AdminPcPartsService(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
@@ -35,11 +35,23 @@ namespace bitpctechapi.Services
             return status > 0;
         }
 
+        public async Task<bool> AddImages(Images images)
+        {
+            await _dataContext.Images.AddAsync(images);
+            var status = await _dataContext.SaveChangesAsync();
+            return status > 0;
+        }
+
         public async Task<bool> AddSpecification(Specification specification)
         {
             await _dataContext.Specifications.AddAsync(specification);
             var status = await _dataContext.SaveChangesAsync();
             return status > 0;
+        }
+
+        public async Task<Images> GetImageById(int imageId)
+        {
+            return await _dataContext.Images.SingleOrDefaultAsync(x => x.ImagesId == imageId);
         }
 
         public async Task<Brand> GetBrandById(int brandId)
@@ -67,6 +79,11 @@ namespace bitpctechapi.Services
             return await _dataContext.PcParts.ToArrayAsync();
         }
 
+        public async Task<Images[]> GetImagesAll()
+        {
+            return await _dataContext.Images.ToArrayAsync();
+        }
+
         public async Task<Category[]> GetCategoryAll()
         {
             return await _dataContext.Categories.ToArrayAsync();
@@ -80,6 +97,74 @@ namespace bitpctechapi.Services
         public async Task<Specification[]> GetSpecificationAll()
         {
             return await _dataContext.Specifications.ToArrayAsync();
+        }
+
+        public async Task<bool> DeletePcPartById(int pcPartId)
+        {
+            var pcPart = await GetPcPartById(pcPartId);
+
+            if (pcPart != null)
+            {
+                var images = await GetImageById(pcPart.ImagesId);
+                _dataContext.PcParts.Remove(pcPart);
+                _dataContext.Images.Remove(images);
+
+                var deleted = await _dataContext.SaveChangesAsync();
+                return deleted > 0;
+            }
+            return false;
+        }
+
+        public async Task<bool> DeleteImageById(int imageId)
+        {
+            var images = await GetImageById(imageId);
+            if (images != null)
+            {
+                _dataContext.Images.Remove(images);
+
+                var deleted = await _dataContext.SaveChangesAsync();
+                return deleted > 0;
+            }
+            return false;
+        }
+
+        public async Task<bool> DeleteCategoryById(int categoryId)
+        {
+            var category = await GetCategoryById(categoryId);
+            if (category != null)
+            {
+                _dataContext.Categories.Remove(category);
+
+                var deleted = await _dataContext.SaveChangesAsync();
+                return deleted > 0;
+            }
+            return false;
+        }
+
+        public async Task<bool> DeleteBrandById(int brandId)
+        {
+            var brand = await GetBrandById(brandId);
+            if (brand != null)
+            {
+                _dataContext.Brands.Remove(brand);
+
+                var deleted = await _dataContext.SaveChangesAsync();
+                return deleted > 0;
+            }
+            return false;
+        }
+
+        public async Task<bool> DeleteSpecificationById(int specificationId)
+        {
+            var specification = await GetSpecificationById(specificationId);
+            if (specification != null)
+            {
+                _dataContext.Specifications.Remove(specification);
+
+                var deleted = await _dataContext.SaveChangesAsync();
+                return deleted > 0;
+            }
+            return false;
         }
     }
 }

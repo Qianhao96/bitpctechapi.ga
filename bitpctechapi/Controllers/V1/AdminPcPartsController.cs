@@ -10,6 +10,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 
 namespace bitpctechapi.Controllers.V1
 {
@@ -27,15 +28,6 @@ namespace bitpctechapi.Controllers.V1
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddPart([FromForm] AdminAddPartRequest request)
         {
-            string Image;
-            using (var ms = new MemoryStream())
-            {
-                request.Image.CopyTo(ms);
-                var fileBytes = ms.ToArray();
-                Image = Convert.ToBase64String(fileBytes);
-                // act on the Base64 data
-            }
-
             PcPart pcPart = new PcPart()
             {
                 Name = request.Name,
@@ -45,7 +37,7 @@ namespace bitpctechapi.Controllers.V1
                 SpecificationId = request.SpecificationId,
                 Price = request.Price,
                 Discount = request.Discount,
-                Image = Image,
+                ImagesId = request.ImagesId,
                 DisplayOrder = request.DisplayOrder,
                 CategoryId = request.CategoryId
             };
@@ -61,7 +53,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -80,7 +72,85 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
+            }
+        }
+
+        [HttpDelete(ApiRoutes.AdminPcParts.DeletePartById)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeletePartById([FromRoute]int pcPartId)
+        {
+            var delete = await _adminPcPartsService.DeletePcPartById(pcPartId);
+
+            if (delete)
+                return Ok("Successfully deleted");
+
+            return NotFound("Can not find any");
+        }
+
+        private string ImageToBase64(IFormFile image)
+        {
+            string Image;
+            using (var ms = new MemoryStream())
+            {
+                image.CopyTo(ms);
+                var fileBytes = ms.ToArray();
+                Image = Convert.ToBase64String(fileBytes);
+                // act on the Base64 data
+            }
+            return Image;
+        }
+
+        [HttpPost(ApiRoutes.AdminPcParts.AddImages)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AddImages([FromForm] AdminAddImagesRequest request)
+        {
+            var test = (request.Image1 != null)? ImageToBase64(request.Image1) : "";
+            var image = new Images()
+            {
+                Image1 = (request.Image1 != null) ? ImageToBase64(request.Image1) : "",
+                Image2 = (request.Image2 != null) ? ImageToBase64(request.Image2) : "",
+                Image3 = (request.Image3 != null) ? ImageToBase64(request.Image3) : "",
+                Image4 = (request.Image4 != null) ? ImageToBase64(request.Image4) : "",
+                Image5 = (request.Image5 != null) ? ImageToBase64(request.Image5) : "",
+                Image6 = (request.Image6 != null) ? ImageToBase64(request.Image6) : "",
+                Image7 = (request.Image7 != null) ? ImageToBase64(request.Image7) : "",
+                Image8 = (request.Image8 != null) ? ImageToBase64(request.Image8) : "",
+                Image9 = (request.Image9 != null) ? ImageToBase64(request.Image9) : "",
+                Image10 = (request.Image10 != null) ? ImageToBase64(request.Image10) : ""
+            };
+
+            try
+            {
+                var status = await _adminPcPartsService.AddImages(image);
+
+                if (status)
+                    return Ok("Successfully added a new Images");
+
+                return BadRequest("Failed");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(422, e.Message);
+            }
+        }
+
+        [HttpGet(ApiRoutes.AdminPcParts.GetImagesAll)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetImagesAll()
+        {
+            try
+            {
+                var images = await _adminPcPartsService.GetImagesAll();
+
+                if (images != null)
+                    return Ok(new AdminGetAllImagesResponse() { Images = images });
+
+                return NotFound("Can not find any Image at this moment");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -101,7 +171,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch(Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -120,7 +190,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -141,7 +211,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -160,7 +230,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -181,7 +251,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -200,7 +270,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 

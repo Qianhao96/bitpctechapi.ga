@@ -53,7 +53,7 @@ namespace bitpctechapi
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseDeveloperExceptionPage();
+            //app.UseDeveloperExceptionPage();
             app.UseMvc();
         }
     }
