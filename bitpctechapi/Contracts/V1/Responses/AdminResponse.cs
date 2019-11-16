@@ -26,4 +26,9 @@ namespace bitpctechapi.Contracts.V1.Responses
     {
         public Images[] Images { get; set; }
     }
+
+    public class AdminAddOrDeleteResponse
+    {
+        public string Message { get; set; }
+    }
 }
