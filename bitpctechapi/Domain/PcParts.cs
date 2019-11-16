@@ -25,7 +25,6 @@ namespace bitpctechapi.Domain
         [Required]
         public int SpecificationId { get; set; }
         [ForeignKey("SpecificationId")]
-
         public Specification Specification { get; set; }
 
         [Required]
@@ -34,15 +33,49 @@ namespace bitpctechapi.Domain
         public double? Discount { get; set; }
 
         [Required]
-        public string Image { get; set; }
+        public int ImagesId { get; set; }
+        [ForeignKey("ImagesId")]
+        public Images Images { get; set; }
 
         public int? DisplayOrder { get; set; }
 
         [Required]
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
-
         public Category Category { get; set; }
+    }
+
+    public class Images
+    {
+        [Key]
+        [Required]
+        public int ImagesId { get; set; }
+
+        [Required]
+        public string Image1 { get; set; }
+
+        [Required]
+        public string Image2 { get; set; }
+
+        [Required]
+        public string Image3 { get; set; }
+
+        [Required]
+        public string Image4 { get; set; }
+
+        [Required]
+        public string Image5 { get; set; }
+
+        public string Image6 { get; set; }
+
+        public string Image7 { get; set; }
+
+        public string Image8 { get; set; }
+
+        public string Image9 { get; set; }
+
+        public string Image10 { get; set; }
+
     }
 
     public class Category
