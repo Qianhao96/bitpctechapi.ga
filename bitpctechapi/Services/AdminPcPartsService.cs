@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using bitpctechapi.Data;
 using bitpctechapi.Domain;
 using Microsoft.EntityFrameworkCore;
@@ -49,29 +50,29 @@ namespace bitpctechapi.Services
             return status > 0;
         }
 
-        public async Task<Images> GetImageById(int imageId)
+        public async Task<Images> GetImageById(Guid imageId)
         {
-            return await _dataContext.Images.SingleOrDefaultAsync(x => x.ImagesId == imageId);
+            return await _dataContext.Images.SingleOrDefaultAsync(x => x.Id == imageId);
         }
 
-        public async Task<Brand> GetBrandById(int brandId)
+        public async Task<Brand> GetBrandById(Guid brandId)
         {
-            return await _dataContext.Brands.SingleOrDefaultAsync(x => x.BrandId == brandId);
+            return await _dataContext.Brands.SingleOrDefaultAsync(x => x.Id == brandId);
         }
 
-        public async Task<Category> GetCategoryById(int categoryId)
+        public async Task<Category> GetCategoryById(Guid categoryId)
         {
-            return await _dataContext.Categories.SingleOrDefaultAsync(x => x.CategoryId == categoryId);
+            return await _dataContext.Categories.SingleOrDefaultAsync(x => x.Id == categoryId);
         }
 
-        public async Task<PcPart> GetPcPartById(int pcPartId)
+        public async Task<PcPart> GetPcPartById(Guid pcPartId)
         {
-            return await _dataContext.PcParts.SingleOrDefaultAsync(x => x.PcPartId == pcPartId);
+            return await _dataContext.PcParts.SingleOrDefaultAsync(x => x.Id == pcPartId);
         }
 
-        public async Task<Specification> GetSpecificationById(int specificationId)
+        public async Task<Specification> GetSpecificationById(Guid specificationId)
         {
-            return await _dataContext.Specifications.SingleOrDefaultAsync(x => x.SpecificationId == specificationId);
+            return await _dataContext.Specifications.SingleOrDefaultAsync(x => x.Id == specificationId);
         }
 
         public async Task<PcPart[]> GetPcPartAll()
@@ -99,7 +100,7 @@ namespace bitpctechapi.Services
             return await _dataContext.Specifications.ToArrayAsync();
         }
 
-        public async Task<bool> DeletePcPartById(int pcPartId)
+        public async Task<bool> DeletePcPartById(Guid pcPartId)
         {
             var pcPart = await GetPcPartById(pcPartId);
 
@@ -115,7 +116,7 @@ namespace bitpctechapi.Services
             return false;
         }
 
-        public async Task<bool> DeleteImageById(int imageId)
+        public async Task<bool> DeleteImageById(Guid imageId)
         {
             var images = await GetImageById(imageId);
             if (images != null)
@@ -128,7 +129,7 @@ namespace bitpctechapi.Services
             return false;
         }
 
-        public async Task<bool> DeleteCategoryById(int categoryId)
+        public async Task<bool> DeleteCategoryById(Guid categoryId)
         {
             var category = await GetCategoryById(categoryId);
             if (category != null)
@@ -141,7 +142,7 @@ namespace bitpctechapi.Services
             return false;
         }
 
-        public async Task<bool> DeleteBrandById(int brandId)
+        public async Task<bool> DeleteBrandById(Guid brandId)
         {
             var brand = await GetBrandById(brandId);
             if (brand != null)
@@ -154,7 +155,7 @@ namespace bitpctechapi.Services
             return false;
         }
 
-        public async Task<bool> DeleteSpecificationById(int specificationId)
+        public async Task<bool> DeleteSpecificationById(Guid specificationId)
         {
             var specification = await GetSpecificationById(specificationId);
             if (specification != null)
