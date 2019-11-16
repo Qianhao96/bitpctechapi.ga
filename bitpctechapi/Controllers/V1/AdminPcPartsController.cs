@@ -53,7 +53,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -72,8 +72,20 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
+        }
+
+        [HttpDelete(ApiRoutes.AdminPcParts.DeletePartById)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeletePartById([FromRoute]int pcPartId)
+        {
+            var delete = await _adminPcPartsService.DeletePcPartById(pcPartId);
+
+            if (delete)
+                return Ok("Successfully deleted");
+
+            return NotFound("Can not find any");
         }
 
         private string ImageToBase64(IFormFile image)
@@ -119,7 +131,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -138,7 +150,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -159,7 +171,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch(Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -178,7 +190,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -199,7 +211,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -218,7 +230,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -239,7 +251,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 
@@ -258,7 +270,7 @@ namespace bitpctechapi.Controllers.V1
             }
             catch (Exception e)
             {
-                throw e;
+                return StatusCode(422, e.Message);
             }
         }
 

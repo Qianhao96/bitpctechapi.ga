@@ -102,9 +102,12 @@ namespace bitpctechapi.Services
         public async Task<bool> DeletePcPartById(int pcPartId)
         {
             var pcPart = await GetPcPartById(pcPartId);
+
             if (pcPart != null)
             {
+                var images = await GetImageById(pcPart.ImagesId);
                 _dataContext.PcParts.Remove(pcPart);
+                _dataContext.Images.Remove(images);
 
                 var deleted = await _dataContext.SaveChangesAsync();
                 return deleted > 0;
