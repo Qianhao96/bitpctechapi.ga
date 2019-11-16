@@ -26,7 +26,7 @@ namespace bitpctechapi.Controllers.V1
 
         [HttpPost(ApiRoutes.AdminPcParts.AddPart)]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddPart([FromForm] AdminAddPartRequest request)
+        public async Task<IActionResult> AddPart([FromBody] AdminAddPartRequest request)
         {
             PcPart pcPart = new PcPart()
             {
@@ -103,7 +103,7 @@ namespace bitpctechapi.Controllers.V1
 
         [HttpPost(ApiRoutes.AdminPcParts.AddImages)]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddImages([FromForm] AdminAddImagesRequest request)
+        public async Task<IActionResult> AddImages([FromBody] AdminAddImagesRequest request)
         {
             var test = (request.Image1 != null)? ImageToBase64(request.Image1) : "";
             var image = new Images()
@@ -156,7 +156,7 @@ namespace bitpctechapi.Controllers.V1
 
         [HttpPost(ApiRoutes.AdminPcParts.AddBrand)]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddBrand([FromForm] AdminAddBrandRequest request)
+        public async Task<IActionResult> AddBrand([FromBody] AdminAddBrandRequest request)
         {
             var brand = new Brand(){ Name = request.Name };
 
@@ -196,7 +196,7 @@ namespace bitpctechapi.Controllers.V1
 
         [HttpPost(ApiRoutes.AdminPcParts.AddCategory)]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddCategory([FromForm] AdminAddCategoryRequest request)
+        public async Task<IActionResult> AddCategory([FromBody] AdminAddCategoryRequest request)
         {
             var category = new Category() { Name = request.Name, DisplayOrder = request.DisplayOrder };
 
@@ -236,7 +236,7 @@ namespace bitpctechapi.Controllers.V1
 
         [HttpPost(ApiRoutes.AdminPcParts.AddSpecification)]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddSpecification([FromForm] AdminAddSpecificationRequest request)
+        public async Task<IActionResult> AddSpecification([FromBody] AdminAddSpecificationRequest request)
         {
             var specification = new Specification() { Description = request.Description };
 
