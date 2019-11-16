@@ -1,19 +1,20 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System;
 
 namespace bitpctechapi.Contracts.V1.Requests
 {
     public class AdminAddPartRequest
     {
         public string Name { get; set; }
-        public int BrandId { get; set; }
+        public Guid BrandId { get; set; }
         public string Model { get; set; }
         public string Description { get; set; }
-        public int SpecificationId { get; set; }
+        public Guid SpecificationId { get; set; }
         public double Price { get; set; }
         public double Discount { get; set; }
-        public int ImagesId { get; set; }
+        public Guid ImagesId { get; set; }
         public int DisplayOrder { get; set; }
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
 
     }
 

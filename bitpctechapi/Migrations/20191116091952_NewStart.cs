@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace bitpctechapi.Migrations
 {
-    public partial class Test : Migration
+    public partial class NewStart : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,6 +48,52 @@ namespace bitpctechapi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Brands",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Brands", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    DisplayOrder = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Image1 = table.Column<string>(nullable: false),
+                    Image2 = table.Column<string>(nullable: false),
+                    Image3 = table.Column<string>(nullable: false),
+                    Image4 = table.Column<string>(nullable: false),
+                    Image5 = table.Column<string>(nullable: false),
+                    Image6 = table.Column<string>(nullable: true),
+                    Image7 = table.Column<string>(nullable: true),
+                    Image8 = table.Column<string>(nullable: true),
+                    Image9 = table.Column<string>(nullable: true),
+                    Image10 = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Posts",
                 columns: table => new
                 {
@@ -57,6 +103,18 @@ namespace bitpctechapi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Posts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Specifications",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Description = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Specifications", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -165,6 +223,51 @@ namespace bitpctechapi.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "PcParts",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    BrandId = table.Column<Guid>(nullable: false),
+                    Model = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: false),
+                    SpecificationId = table.Column<Guid>(nullable: false),
+                    Price = table.Column<double>(nullable: false),
+                    Discount = table.Column<double>(nullable: true),
+                    ImagesId = table.Column<Guid>(nullable: false),
+                    DisplayOrder = table.Column<int>(nullable: true),
+                    CategoryId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PcParts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PcParts_Brands_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brands",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PcParts_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PcParts_Images_ImagesId",
+                        column: x => x.ImagesId,
+                        principalTable: "Images",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PcParts_Specifications_SpecificationId",
+                        column: x => x.SpecificationId,
+                        principalTable: "Specifications",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -203,6 +306,26 @@ namespace bitpctechapi.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PcParts_BrandId",
+                table: "PcParts",
+                column: "BrandId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PcParts_CategoryId",
+                table: "PcParts",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PcParts_ImagesId",
+                table: "PcParts",
+                column: "ImagesId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PcParts_SpecificationId",
+                table: "PcParts",
+                column: "SpecificationId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -223,6 +346,9 @@ namespace bitpctechapi.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "PcParts");
+
+            migrationBuilder.DropTable(
                 name: "Posts");
 
             migrationBuilder.DropTable(
@@ -230,6 +356,18 @@ namespace bitpctechapi.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Brands");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Images");
+
+            migrationBuilder.DropTable(
+                name: "Specifications");
         }
     }
 }
