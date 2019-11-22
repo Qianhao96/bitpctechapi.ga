@@ -39,7 +39,8 @@ namespace bitpctechapi.Controllers.V1
                 Discount = request.Discount,
                 ImagesId = request.ImagesId,
                 DisplayOrder = request.DisplayOrder,
-                CategoryId = request.CategoryId
+                CategoryId = request.CategoryId,
+                StockQuantity = request.StockQuantity
             };
 
             try
