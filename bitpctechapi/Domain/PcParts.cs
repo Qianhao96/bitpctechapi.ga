@@ -43,6 +43,9 @@ namespace bitpctechapi.Domain
         public Guid CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
+
+        [Required]
+        public int StockQuantity { get; set; }
     }
 
     public class Images

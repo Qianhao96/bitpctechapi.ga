@@ -30,15 +30,19 @@
             public const string AddImages = Base + "/admin/images";
             public const string GetImagesAll = Base + "/admin/images";
             public const string GetImageById = Base + "/admin/images/{imageId}";
+            public const string DeleteImageById = Base + "/admin/images/{imageId}";
             public const string AddBrand = Base + "/admin/brand";
             public const string GetBrandAll = Base + "/admin/brand";
             public const string GetBrandById = Base + "/admin/brand/{brandId}";
+            public const string DeleteBrandById = Base + "/admin/brand/{brandId}";
             public const string AddCategory = Base + "/admin/category";
             public const string GetCategoryAll = Base + "/admin/category";
             public const string GetCategoryById = Base + "/admin/category/{categoryId}";
+            public const string DeleteCategoryById = Base + "/admin/category/{categoryId}";
             public const string AddSpecification = Base + "/admin/specification";
             public const string GetSpecificationAll = Base + "/admin/specification";
             public const string GetSpecificationById = Base + "/admin/specification/{specificationId}";
+            public const string DeleteSpecificationById = Base + "/admin/specification/{specificationId}";
         }
     }
 }

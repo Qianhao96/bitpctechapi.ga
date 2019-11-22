@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using System;
 
 namespace bitpctechapi.Installers
 {
@@ -43,7 +44,8 @@ namespace bitpctechapi.Installers
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     RequireExpirationTime = false,
-                    ValidateLifetime = true
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
                 };
             });
 
