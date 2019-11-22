@@ -76,6 +76,25 @@ namespace bitpctechapi.Controllers.V1
             }
         }
 
+        [HttpGet(ApiRoutes.AdminPcParts.GetPartById)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetPartById([FromRoute]Guid pcPartId)
+        {
+            try
+            {
+                var pcParts = await _adminPcPartsService.GetPcPartById(pcPartId);
+
+                if (pcParts != null)
+                    return Ok(new AdminGetAPcPartResponse() { PcParts = pcParts });
+
+                return NotFound("Can not find this PcPart at this moment");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(422, e);
+            }
+        }
+
         [HttpDelete(ApiRoutes.AdminPcParts.DeletePartById)]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeletePartById([FromRoute]Guid pcPartId)
@@ -154,6 +173,37 @@ namespace bitpctechapi.Controllers.V1
             }
         }
 
+        [HttpGet(ApiRoutes.AdminPcParts.GetImageById)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetImageById([FromRoute]Guid imageId)
+        {
+            try
+            {
+                var images = await _adminPcPartsService.GetImageById(imageId);
+
+                if (images != null)
+                    return Ok(new AdminGetAImagesResponse() { Images = images });
+
+                return NotFound("Can not find a Image at this moment");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(422, e);
+            }
+        }
+
+        [HttpDelete(ApiRoutes.AdminPcParts.DeleteImageById)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteImageById([FromRoute]Guid imageId)
+        {
+            var delete = await _adminPcPartsService.DeleteImageById(imageId);
+
+            if (delete)
+                return Ok(new AdminAddOrDeleteResponse { Message = "Successfully delete images" });
+
+            return NotFound("Can not find any");
+        }
+
         [HttpPost(ApiRoutes.AdminPcParts.AddBrand)]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddBrand([FromBody] AdminAddBrandRequest request)
@@ -192,6 +242,37 @@ namespace bitpctechapi.Controllers.V1
             {
                 return StatusCode(422, e);
             }
+        }
+
+        [HttpGet(ApiRoutes.AdminPcParts.GetBrandById)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetBrandById([FromRoute] Guid brandId)
+        {
+            try
+            {
+                var brands = await _adminPcPartsService.GetBrandById(brandId);
+
+                if (brands != null)
+                    return Ok(new AdminGetABrandResponse() { Brands = brands });
+
+                return NotFound("Can not find any Brand at this moment");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(422, e);
+            }
+        }
+
+        [HttpDelete(ApiRoutes.AdminPcParts.DeleteBrandById)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteBrandById([FromRoute]Guid brandId)
+        {
+            var delete = await _adminPcPartsService.DeleteBrandById(brandId);
+
+            if (delete)
+                return Ok(new AdminAddOrDeleteResponse { Message = "Successfully delete a brand" });
+
+            return NotFound("Can not find any");
         }
 
         [HttpPost(ApiRoutes.AdminPcParts.AddCategory)]
@@ -234,6 +315,37 @@ namespace bitpctechapi.Controllers.V1
             }
         }
 
+        [HttpGet(ApiRoutes.AdminPcParts.GetCategoryById)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetCategoryById([FromRoute]Guid categoryId)
+        {
+            try
+            {
+                var categories = await _adminPcPartsService.GetCategoryById(categoryId);
+
+                if (categories != null)
+                    return Ok(new AdminGetACategoryResponse() { Categories = categories });
+
+                return NotFound("Can not find any Category at this moment");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(422, e);
+            }
+        }
+
+        [HttpDelete(ApiRoutes.AdminPcParts.DeleteCategoryById)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteCategoryById([FromRoute]Guid categoryId)
+        {
+            var delete = await _adminPcPartsService.DeleteCategoryById(categoryId);
+
+            if (delete)
+                return Ok(new AdminAddOrDeleteResponse { Message = "Successfully delete a category" });
+
+            return NotFound("Can not find any");
+        }
+
         [HttpPost(ApiRoutes.AdminPcParts.AddSpecification)]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddSpecification([FromBody] AdminAddSpecificationRequest request)
@@ -272,6 +384,37 @@ namespace bitpctechapi.Controllers.V1
             {
                 return StatusCode(422, e);
             }
+        }
+
+        [HttpGet(ApiRoutes.AdminPcParts.GetSpecificationById)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetSpecificationById([FromRoute]Guid specificationId)
+        {
+            try
+            {
+                var specifications = await _adminPcPartsService.GetSpecificationById(specificationId);
+
+                if (specifications != null)
+                    return Ok(new AdminGetASpecificationResponse() { Specifications = specifications });
+
+                return NotFound("Can not find any Specification at this moment");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(422, e);
+            }
+        }
+
+        [HttpDelete(ApiRoutes.AdminPcParts.DeleteSpecificationById)]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteSpecificationById([FromRoute]Guid specificationId)
+        {
+            var delete = await _adminPcPartsService.DeleteSpecificationById(specificationId);
+
+            if (delete)
+                return Ok(new AdminAddOrDeleteResponse { Message = "Successfully delete a specification" });
+
+            return NotFound("Can not find any");
         }
 
     }
