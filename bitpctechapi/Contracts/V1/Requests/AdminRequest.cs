@@ -15,6 +15,7 @@ namespace bitpctechapi.Contracts.V1.Requests
         public Guid ImagesId { get; set; }
         public int DisplayOrder { get; set; }
         public Guid CategoryId { get; set; }
+        public int StockQuantity { get; set; }
 
     }
 
