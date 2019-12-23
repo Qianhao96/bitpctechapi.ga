@@ -37,15 +37,29 @@ namespace bitpctechapi.Contracts.V1.Requests
 
     public class AdminAddImagesRequest
     {
-        public IFormFile Image1 { get; set; }
-        public IFormFile Image2 { get; set; }
-        public IFormFile Image3 { get; set; }
-        public IFormFile Image4 { get; set; }
-        public IFormFile Image5 { get; set; }
-        public IFormFile Image6 { get; set; }
-        public IFormFile Image7 { get; set; }
-        public IFormFile Image8 { get; set; }
-        public IFormFile Image9 { get; set; }
-        public IFormFile Image10 { get; set; }
+        public string Image1 { get; set; }
+        public string Image2 { get; set; }
+        public string Image3 { get; set; }
+        public string Image4 { get; set; }
+        public string Image5 { get; set; }
+        public string Image6 { get; set; }
+        public string Image7 { get; set; }
+        public string Image8 { get; set; }
+        public string Image9 { get; set; }
+        public string Image10 { get; set; }
     }
+
+    //public class AdminAddImagesRequest
+    //{
+    //    public IFormFile Image1 { get; set; }
+    //    public IFormFile Image2 { get; set; }
+    //    public IFormFile Image3 { get; set; }
+    //    public IFormFile Image4 { get; set; }
+    //    public IFormFile Image5 { get; set; }
+    //    public IFormFile Image6 { get; set; }
+    //    public IFormFile Image7 { get; set; }
+    //    public IFormFile Image8 { get; set; }
+    //    public IFormFile Image9 { get; set; }
+    //    public IFormFile Image10 { get; set; }
+    //}
 }
