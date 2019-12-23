@@ -159,7 +159,7 @@ namespace bitpctechapi.Controllers.V1
                 var status = await _adminPcPartsService.AddImages(image);
 
                 if (status)
-                    return Ok(new AdminAddOrDeleteResponse { Message = "Successfully added new images" });
+                    return Ok(new AdminAddOrDeleteResponse { Message = "Successfully added new images", ImageId = image.Id });
 
                 return BadRequest("Failed");
             }
