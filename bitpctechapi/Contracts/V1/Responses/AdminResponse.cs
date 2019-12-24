@@ -1,4 +1,5 @@
 ﻿using bitpctechapi.Domain;
+using System;
 
 namespace bitpctechapi.Contracts.V1.Responses
 {
@@ -55,5 +56,6 @@ namespace bitpctechapi.Contracts.V1.Responses
     public class AdminAddOrDeleteResponse
     {
         public string Message { get; set; }
+        public Guid ImageId { get; set; }
     }
 }
