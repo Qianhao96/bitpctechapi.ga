@@ -125,19 +125,33 @@ namespace bitpctechapi.Controllers.V1
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddImages([FromBody] AdminAddImagesRequest request)
         {
-            var test = (request.Image1 != null)? ImageToBase64(request.Image1) : "";
+            //var test = (request.Image1 != null)? ImageToBase64(request.Image1) : "";
+            //var image = new Images()
+            //{
+            //    Image1 = (request.Image1 != null) ? ImageToBase64(request.Image1) : "",
+            //    Image2 = (request.Image2 != null) ? ImageToBase64(request.Image2) : "",
+            //    Image3 = (request.Image3 != null) ? ImageToBase64(request.Image3) : "",
+            //    Image4 = (request.Image4 != null) ? ImageToBase64(request.Image4) : "",
+            //    Image5 = (request.Image5 != null) ? ImageToBase64(request.Image5) : "",
+            //    Image6 = (request.Image6 != null) ? ImageToBase64(request.Image6) : "",
+            //    Image7 = (request.Image7 != null) ? ImageToBase64(request.Image7) : "",
+            //    Image8 = (request.Image8 != null) ? ImageToBase64(request.Image8) : "",
+            //    Image9 = (request.Image9 != null) ? ImageToBase64(request.Image9) : "",
+            //    Image10 = (request.Image10 != null) ? ImageToBase64(request.Image10) : ""
+            //}
+
             var image = new Images()
             {
-                Image1 = (request.Image1 != null) ? ImageToBase64(request.Image1) : "",
-                Image2 = (request.Image2 != null) ? ImageToBase64(request.Image2) : "",
-                Image3 = (request.Image3 != null) ? ImageToBase64(request.Image3) : "",
-                Image4 = (request.Image4 != null) ? ImageToBase64(request.Image4) : "",
-                Image5 = (request.Image5 != null) ? ImageToBase64(request.Image5) : "",
-                Image6 = (request.Image6 != null) ? ImageToBase64(request.Image6) : "",
-                Image7 = (request.Image7 != null) ? ImageToBase64(request.Image7) : "",
-                Image8 = (request.Image8 != null) ? ImageToBase64(request.Image8) : "",
-                Image9 = (request.Image9 != null) ? ImageToBase64(request.Image9) : "",
-                Image10 = (request.Image10 != null) ? ImageToBase64(request.Image10) : ""
+                Image1 = request.Image1,
+                Image2 = request.Image2,
+                Image3 = request.Image3,
+                Image4 = request.Image4,
+                Image5 = request.Image5,
+                Image6 = request.Image6,
+                Image7 = request.Image7,
+                Image8 = request.Image8,
+                Image9 = request.Image9,
+                Image10 = request.Image10
             };
 
             try
@@ -145,7 +159,7 @@ namespace bitpctechapi.Controllers.V1
                 var status = await _adminPcPartsService.AddImages(image);
 
                 if (status)
-                    return Ok(new AdminAddOrDeleteResponse { Message = "Successfully added new images" });
+                    return Ok(new AdminAddOrDeleteResponse { Message = "Successfully added new images", ImageId = image.Id });
 
                 return BadRequest("Failed");
             }
