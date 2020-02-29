@@ -44,5 +44,13 @@
             public const string GetSpecificationById = Base + "/admin/specification/{specificationId}";
             public const string DeleteSpecificationById = Base + "/admin/specification/{specificationId}";
         }
+        public static class Catalog
+        {
+            public const string GetProductsByCategoryAndBrand = Base + "/catalog/product/{categoryId}/{brandId}";
+            public const string GetAllCategory = Base + "/catalog/category";
+            public const string GetAllBrand = Base + "/catalog/brand";
+            public const string GetImagesByPcpartId = Base + "/catalog/images/{pcpartId}";
+        }
+
     }
 }
