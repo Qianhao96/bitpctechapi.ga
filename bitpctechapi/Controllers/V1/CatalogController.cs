@@ -3,12 +3,11 @@ using System.Threading.Tasks;
 using bitpctechapi.Contracts;
 using bitpctechapi.Data;
 using bitpctechapi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace bitpctechapi.Controllers.V1
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class CatalogController : ControllerBase
     {
         public readonly ICatalogService _catalogService;
