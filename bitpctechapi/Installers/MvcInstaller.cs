@@ -26,6 +26,7 @@ namespace bitpctechapi.Installers
 
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<IAdminPcPartsService, AdminPcPartsService>();
+            services.AddScoped<ICatalogService, CatalogService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
