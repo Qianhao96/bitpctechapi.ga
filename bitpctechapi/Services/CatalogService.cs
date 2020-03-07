@@ -42,7 +42,7 @@ namespace bitpctechapi.Services
                     Price = pro.Price,
                     PriceAfterDiscount = (double)(pro.Price * pro.Discount),
                     Discount = (double)pro.Discount,
-                    //Images = pro.Images,
+                    Images = pro.Images,
                     DisplayOrder = (int)pro.DisplayOrder,
                     Category = pro.Category,
                     StockQuantity = pro.StockQuantity
